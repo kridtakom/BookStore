@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('avatar')->nullable(); // default ของทุก attr ที่สร้างคือ not null อยากให้ null ได้ต้องใส่ nullable() 
-            $table->string('name');
+            $table->string('fullname');
             $table->string('username');
             $table->string('password');
             $table->timestamps();

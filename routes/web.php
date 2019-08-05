@@ -19,7 +19,13 @@
 Route::get('/login', 'AuthController@index')->name('login.home');
 Route::post('/login', 'AuthController@login')->name('login');
 
+Route::get('/register', 'AuthController@toRegisterForm')->name('toRegisterForm');
+Route::post('/register', 'AuthController@register')->name('register');
+
 Route::group(['middleware' => ['auth']], function () {
+
+    // authen ไม่ผ่านจะไม่สามรถเข้ามาในนี้ได้มันจะผลักกลับไปหน้า  function index  เสมอ
+
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
     Route::get('/book', 'BookController@index')->name('book.show');

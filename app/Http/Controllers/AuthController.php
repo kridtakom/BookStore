@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\BookStore; //ทำให้เราเรียกเพื่อมาทำอะไรเกี่ยวกับ DB ได้
 use Validator;
 use Illuminate\Support\Facades;
-use Illuminate\Support\Facades\Hash;
+use Hash;
 use Auth;
+use App\User;
 
 
 class AuthController extends Controller
@@ -50,19 +50,40 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    public function Register (Request $request)
+    public function toRegisterForm()
+    {
+        return view('login.register',);
+    }
+
+
+    public function register (Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name ' => 'required',
             'username' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:6|max:20',
+            'fullname' => 'required'
         ], [
-            'name.required' => 'name is required',
-            'username.required' => 'username is required',
-            'password.required' => 'password is required',
+            // 'name.required' => 'name is required',
+            // 'username.required' => 'username is required',
+            // 'password.required' => 'password is required',
+            // 'name.max' => 'name max charactor 100',
+            // 'password.max' => 'password max charactor 20',
+            // 'password.min' => 'password min charactor 6',
+
         ]);
-        
-        //if(Auth::)
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors());
+        }
+
+       User::create([
+           'fullname' => $request->fullname,
+           'username' => $request->username,
+           'password'=> Hash::make($request->password)
+       ]);
+
+       return redirect()->route('login.home');
+
 
     }
 }

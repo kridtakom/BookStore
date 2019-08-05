@@ -24,7 +24,7 @@
                 <div class="dropdown">
                     <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="{{$user->avatar}}" class="img-fluid rounded-circle" width="40" />
-                        <B>KUY : {{$user->name}}</B>
+                        <B>KUY : {{$user->fullname}}</B>
                     </a>
                     
                         <div class="dropdown-menu px-4" aria-labelledby="dropdownMenuLink ">
