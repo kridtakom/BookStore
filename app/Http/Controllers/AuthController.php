@@ -63,12 +63,12 @@ class AuthController extends Controller
             'password' => 'required|min:6|max:20',
             'fullname' => 'required'
         ], [
-            // 'name.required' => 'name is required',
-            // 'username.required' => 'username is required',
-            // 'password.required' => 'password is required',
-            // 'name.max' => 'name max charactor 100',
-            // 'password.max' => 'password max charactor 20',
-            // 'password.min' => 'password min charactor 6',
+            'name.required' => 'name is required',
+            'username.required' => 'username is required',
+            'password.required' => 'password is required',
+            'name.max' => 'name max charactor 100',
+            'password.max' => 'password max charactor 20',
+            'password.min' => 'password min charactor 6',
 
         ]);
 
